@@ -12,8 +12,8 @@ using RESTful.API.Data;
 namespace RESTful.API.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20231025225340_DbCreation")]
-    partial class DbCreation
+    [Migration("20231026175311_RecreateDatabase")]
+    partial class RecreateDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,6 +57,9 @@ namespace RESTful.API.Data.Migrations
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -65,6 +68,34 @@ namespace RESTful.API.Data.Migrations
                     b.HasIndex("TypeId");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1991, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Admin",
+                            Identification = "1111111111",
+                            LastName = "Admin",
+                            TypeId = 1,
+                            UpdatedBy = 0,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1992, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "User",
+                            Identification = "2222222222",
+                            LastName = "Test",
+                            TypeId = 2,
+                            UpdatedBy = 0,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("RESTful.API.Data.Models.UserType", b =>
@@ -85,12 +116,35 @@ namespace RESTful.API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UpdatedBy")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("UserType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Admin",
+                            UpdatedBy = 0,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "User",
+                            UpdatedBy = 0,
+                            UpdatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("RESTful.API.Data.Models.User", b =>

@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace RESTful.API.Data.Models
+﻿namespace RESTful.API.Infrastructure.Models
 {
-    [Table("User")]
-    public class User : BaseDataModel
+    public class UserDTO : BaseModelDTO
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -11,8 +8,7 @@ namespace RESTful.API.Data.Models
         public DateTime? DateOfBirth { get; set; }
 
         #region Relationships
-
-        public UserType Type { get; set; }
+        
         public int  TypeId { get; set; }
 
         #endregion

@@ -3,7 +3,7 @@
 namespace RESTful.API.Data.Models
 {
     [Table("UserType")]
-    public class UserType : BaseModel
+    public class UserType : BaseDataModel
     {
         public string Name { get; set; }
 
