@@ -17,6 +17,8 @@ namespace RESTful.API.Business.Services
             _databaseContext = databaseContext;
             _mapper = mapper;
         }
+
+        #region Public Methods
         async Task<IEnumerable<UserDTO>> IUserService.GetAllUsersAsync(int currentUserId)
         {
             ValidateExecution(currentUserId);
@@ -108,7 +110,7 @@ namespace RESTful.API.Business.Services
 
             return true;
         }
-
-        
+        #endregion
+               
     }
 }
